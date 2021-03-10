@@ -109,7 +109,7 @@ class AwesomeHyperopt(IHyperOpt):
                 'macd_cross_signal',
                 'sar_reversal',
                 'ao_signal'
-                ], name='trigger')
+                ], name='trigger'),
 
             Integer(-20, 20, name='ao-value')
         ]
