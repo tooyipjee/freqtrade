@@ -127,41 +127,41 @@ class AwesomeStrategy(IStrategy):
         # ADX
         dataframe['adx'] = ta.ADX(dataframe)
 
-        # Plus Directional Indicator / Movement
-        dataframe['plus_dm'] = ta.PLUS_DM(dataframe)
-        dataframe['plus_di'] = ta.PLUS_DI(dataframe)
+        # # Plus Directional Indicator / Movement
+        # dataframe['plus_dm'] = ta.PLUS_DM(dataframe)
+        # dataframe['plus_di'] = ta.PLUS_DI(dataframe)
 
-        # Minus Directional Indicator / Movement
-        dataframe['minus_dm'] = ta.MINUS_DM(dataframe)
-        dataframe['minus_di'] = ta.MINUS_DI(dataframe)
+        # # Minus Directional Indicator / Movement
+        # dataframe['minus_dm'] = ta.MINUS_DM(dataframe)
+        # dataframe['minus_di'] = ta.MINUS_DI(dataframe)
 
-        # Aroon, Aroon Oscillator
-        aroon = ta.AROON(dataframe)
-        dataframe['aroonup'] = aroon['aroonup']
-        dataframe['aroondown'] = aroon['aroondown']
-        dataframe['aroonosc'] = ta.AROONOSC(dataframe)
+        # # Aroon, Aroon Oscillator
+        # aroon = ta.AROON(dataframe)
+        # dataframe['aroonup'] = aroon['aroonup']
+        # dataframe['aroondown'] = aroon['aroondown']
+        # dataframe['aroonosc'] = ta.AROONOSC(dataframe)
 
         # Awesome Oscillator
         dataframe['ao'] = qtpylib.awesome_oscillator(dataframe)
 
-        # Keltner Channel
-        keltner = qtpylib.keltner_channel(dataframe)
-        dataframe["kc_upperband"] = keltner["upper"]
-        dataframe["kc_lowerband"] = keltner["lower"]
-        dataframe["kc_middleband"] = keltner["mid"]
-        dataframe["kc_percent"] = (
-            (dataframe["close"] - dataframe["kc_lowerband"]) /
-            (dataframe["kc_upperband"] - dataframe["kc_lowerband"])
-        )
-        dataframe["kc_width"] = (
-            (dataframe["kc_upperband"] - dataframe["kc_lowerband"]) / dataframe["kc_middleband"]
-        )
+        # # Keltner Channel
+        # keltner = qtpylib.keltner_channel(dataframe)
+        # dataframe["kc_upperband"] = keltner["upper"]
+        # dataframe["kc_lowerband"] = keltner["lower"]
+        # dataframe["kc_middleband"] = keltner["mid"]
+        # dataframe["kc_percent"] = (
+        #     (dataframe["close"] - dataframe["kc_lowerband"]) /
+        #     (dataframe["kc_upperband"] - dataframe["kc_lowerband"])
+        # )
+        # dataframe["kc_width"] = (
+        #     (dataframe["kc_upperband"] - dataframe["kc_lowerband"]) / dataframe["kc_middleband"]
+        # )
 
-        # Ultimate Oscillator
-        dataframe['uo'] = ta.ULTOSC(dataframe)
+        # # Ultimate Oscillator
+        # dataframe['uo'] = ta.ULTOSC(dataframe)
 
-        # Commodity Channel Index: values [Oversold:-100, Overbought:100]
-        dataframe['cci'] = ta.CCI(dataframe)
+        # # Commodity Channel Index: values [Oversold:-100, Overbought:100]
+        # dataframe['cci'] = ta.CCI(dataframe)
 
         # RSI
         dataframe['rsi'] = ta.RSI(dataframe)
@@ -183,12 +183,12 @@ class AwesomeStrategy(IStrategy):
         dataframe['fastd'] = stoch_fast['fastd']
         dataframe['fastk'] = stoch_fast['fastk']
 
-        # Stochastic RSI
-        # Please read https://github.com/freqtrade/freqtrade/issues/2961 before using this.
-        # STOCHRSI is NOT aligned with tradingview, which may result in non-expected results.
-        stoch_rsi = ta.STOCHRSI(dataframe)
-        dataframe['fastd_rsi'] = stoch_rsi['fastd']
-        dataframe['fastk_rsi'] = stoch_rsi['fastk']
+        # # Stochastic RSI
+        # # Please read https://github.com/freqtrade/freqtrade/issues/2961 before using this.
+        # # STOCHRSI is NOT aligned with tradingview, which may result in non-expected results.
+        # stoch_rsi = ta.STOCHRSI(dataframe)
+        # dataframe['fastd_rsi'] = stoch_rsi['fastd']
+        # dataframe['fastk_rsi'] = stoch_rsi['fastk']
 
         # MACD
         macd = ta.MACD(dataframe)
@@ -233,21 +233,21 @@ class AwesomeStrategy(IStrategy):
             (dataframe["wbb_upperband"] - dataframe["wbb_lowerband"]) / dataframe["wbb_middleband"]
         )
 
-        # EMA - Exponential Moving Average
-        dataframe['ema3'] = ta.EMA(dataframe, timeperiod=3)
-        dataframe['ema5'] = ta.EMA(dataframe, timeperiod=5)
-        dataframe['ema10'] = ta.EMA(dataframe, timeperiod=10)
-        dataframe['ema21'] = ta.EMA(dataframe, timeperiod=21)
-        dataframe['ema50'] = ta.EMA(dataframe, timeperiod=50)
-        dataframe['ema100'] = ta.EMA(dataframe, timeperiod=100)
+        # # EMA - Exponential Moving Average
+        # dataframe['ema3'] = ta.EMA(dataframe, timeperiod=3)
+        # dataframe['ema5'] = ta.EMA(dataframe, timeperiod=5)
+        # dataframe['ema10'] = ta.EMA(dataframe, timeperiod=10)
+        # dataframe['ema21'] = ta.EMA(dataframe, timeperiod=21)
+        # dataframe['ema50'] = ta.EMA(dataframe, timeperiod=50)
+        # dataframe['ema100'] = ta.EMA(dataframe, timeperiod=100)
 
-        # SMA - Simple Moving Average
-        dataframe['sma3'] = ta.SMA(dataframe, timeperiod=3)
-        dataframe['sma5'] = ta.SMA(dataframe, timeperiod=5)
-        dataframe['sma10'] = ta.SMA(dataframe, timeperiod=10)
-        dataframe['sma21'] = ta.SMA(dataframe, timeperiod=21)
-        dataframe['sma50'] = ta.SMA(dataframe, timeperiod=50)
-        dataframe['sma100'] = ta.SMA(dataframe, timeperiod=100)
+        # # SMA - Simple Moving Average
+        # dataframe['sma3'] = ta.SMA(dataframe, timeperiod=3)
+        # dataframe['sma5'] = ta.SMA(dataframe, timeperiod=5)
+        # dataframe['sma10'] = ta.SMA(dataframe, timeperiod=10)
+        # dataframe['sma21'] = ta.SMA(dataframe, timeperiod=21)
+        # dataframe['sma50'] = ta.SMA(dataframe, timeperiod=50)
+        # dataframe['sma100'] = ta.SMA(dataframe, timeperiod=100)
 
         # Parabolic SAR
         dataframe['sar'] = ta.SAR(dataframe)
@@ -255,12 +255,12 @@ class AwesomeStrategy(IStrategy):
         # TEMA - Triple Exponential Moving Average
         dataframe['tema'] = ta.TEMA(dataframe, timeperiod=9)
 
-        # Cycle Indicator
-        # ------------------------------------
-        # Hilbert Transform Indicator - SineWave
-        hilbert = ta.HT_SINE(dataframe)
-        dataframe['htsine'] = hilbert['sine']
-        dataframe['htleadsine'] = hilbert['leadsine']
+        # # Cycle Indicator
+        # # ------------------------------------
+        # # Hilbert Transform Indicator - SineWave
+        # hilbert = ta.HT_SINE(dataframe)
+        # dataframe['htsine'] = hilbert['sine']
+        # dataframe['htleadsine'] = hilbert['leadsine']
 
         # Pattern Recognition - Bullish candlestick patterns
         # ------------------------------------
@@ -292,29 +292,31 @@ class AwesomeStrategy(IStrategy):
         # Evening Star: values [0, 100]
         dataframe['CDLEVENINGSTAR'] = ta.CDLEVENINGSTAR(dataframe)
 
-        # Pattern Recognition - Bullish/Bearish candlestick patterns
-        # ------------------------------------
-        # Three Line Strike: values [0, -100, 100]
-        dataframe['CDL3LINESTRIKE'] = ta.CDL3LINESTRIKE(dataframe)
-        # Spinning Top: values [0, -100, 100]
-        dataframe['CDLSPINNINGTOP'] = ta.CDLSPINNINGTOP(dataframe) # values [0, -100, 100]
-        # Engulfing: values [0, -100, 100]
-        dataframe['CDLENGULFING'] = ta.CDLENGULFING(dataframe) # values [0, -100, 100]
-        # Harami: values [0, -100, 100]
-        dataframe['CDLHARAMI'] = ta.CDLHARAMI(dataframe) # values [0, -100, 100]
-        # Three Outside Up/Down: values [0, -100, 100]
-        dataframe['CDL3OUTSIDE'] = ta.CDL3OUTSIDE(dataframe) # values [0, -100, 100]
-        # Three Inside Up/Down: values [0, -100, 100]
-        dataframe['CDL3INSIDE'] = ta.CDL3INSIDE(dataframe) # values [0, -100, 100]
 
-        # # Chart type
+
+        # # Pattern Recognition - Bullish/Bearish candlestick patterns
         # # ------------------------------------
-        # Heikin Ashi Strategy
-        heikinashi = qtpylib.heikinashi(dataframe)
-        dataframe['ha_open'] = heikinashi['open']
-        dataframe['ha_close'] = heikinashi['close']
-        dataframe['ha_high'] = heikinashi['high']
-        dataframe['ha_low'] = heikinashi['low']
+        # # Three Line Strike: values [0, -100, 100]
+        # dataframe['CDL3LINESTRIKE'] = ta.CDL3LINESTRIKE(dataframe)
+        # # Spinning Top: values [0, -100, 100]
+        # dataframe['CDLSPINNINGTOP'] = ta.CDLSPINNINGTOP(dataframe) # values [0, -100, 100]
+        # # Engulfing: values [0, -100, 100]
+        # dataframe['CDLENGULFING'] = ta.CDLENGULFING(dataframe) # values [0, -100, 100]
+        # # Harami: values [0, -100, 100]
+        # dataframe['CDLHARAMI'] = ta.CDLHARAMI(dataframe) # values [0, -100, 100]
+        # # Three Outside Up/Down: values [0, -100, 100]
+        # dataframe['CDL3OUTSIDE'] = ta.CDL3OUTSIDE(dataframe) # values [0, -100, 100]
+        # # Three Inside Up/Down: values [0, -100, 100]
+        # dataframe['CDL3INSIDE'] = ta.CDL3INSIDE(dataframe) # values [0, -100, 100]
+
+        # # # Chart type
+        # # # ------------------------------------
+        # # Heikin Ashi Strategy
+        # heikinashi = qtpylib.heikinashi(dataframe)
+        # dataframe['ha_open'] = heikinashi['open']
+        # dataframe['ha_close'] = heikinashi['close']
+        # dataframe['ha_high'] = heikinashi['high']
+        # dataframe['ha_low'] = heikinashi['low']
 
         # Retrieve best bid and best ask from the orderbook
         # ------------------------------------
