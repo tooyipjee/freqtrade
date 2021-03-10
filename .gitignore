@@ -5,6 +5,8 @@ logfile.txt
 user_data/*
 !user_data/strategy/sample_strategy.py
 !user_data/notebooks
+!user_data/strategies
+!user_data/hyperopts
 user_data/notebooks/*
 freqtrade-plot.html
 freqtrade-profit-plot.html
