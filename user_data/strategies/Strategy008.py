@@ -10,38 +10,39 @@ import talib.abstract as ta
 import freqtrade.vendor.qtpylib.indicators as qtpylib
 import numpy # noqa
 
-class Strategy007(IStrategy):
+class Strategy008(IStrategy):
     """
-    Strategy 007
+    Strategy 008
     author@: Jason Too
     Output from Hyperopt - 10/3/2021
+    High buy rate but picky on sell
     How to use it?
     > python3 ./freqtrade/main.py -s Strategy002
     """
-    
+
+    # ROI table:
+    minimal_roi = {
+        "0": 0.19841,
+        "31": 0.07619,
+        "80": 0.03396,
+        "161": 0
+    }
+
+    # Stoploss:
+    stoploss = -0.31912
+
     # # Minimal ROI designed for the strategy.
     # # This attribute will be overridden if the config file contains "minimal_roi"
     # minimal_roi = {
     #     "60":  0.015,
     #     "30":  0.03,
     #     "20":  0.06,
-    #     "0":  0.176
+    #     "0":  0.15
     # }
 
     # # Optimal stoploss designed for the strategy
     # # This attribute will be overridden if the config file contains "stoploss"
     # stoploss = -0.10
-    
-     # ROI table:
-    minimal_roi = {
-        "0": 0.17631,
-        "14": 0.03154,
-        "63": 0.01506,
-        "149": 0
-    }
-
-    # Stoploss:
-    stoploss = -0.32335
 
     # Optimal timeframe for the strategy
     timeframe = '5m'
@@ -92,6 +93,9 @@ class Strategy007(IStrategy):
         stoch_fast = ta.STOCHF(dataframe)
         dataframe['fastd'] = stoch_fast['fastd']
 
+        # SAR Parabol
+        dataframe['sar'] = ta.SAR(dataframe)
+
         # Stochastic Slow
         stoch = ta.STOCH(dataframe)
         dataframe['slowd'] = stoch['slowd']
@@ -128,9 +132,6 @@ class Strategy007(IStrategy):
         """
         dataframe.loc[
             (
-                # (dataframe['CDLDRAGONFLYDOJI'] == 100) &
-                (dataframe['fastd'] < 38) &
-                (dataframe['slowk'] < 22) &
                 (dataframe['close'] < dataframe['bb_lowerband'])
             ),
             'buy'] = 1
@@ -145,14 +146,13 @@ class Strategy007(IStrategy):
         """
         dataframe.loc[
             (
-                (dataframe['CDLEVENINGSTAR'] == 100) |
-                (dataframe['CDLEVENINGDOJISTAR'] == 100) |
-                (
-                    (dataframe['adx'] < 52) & 
-                    # (dataframe['mfi'] > 99) & 
-                    (dataframe['rsi'] > 71) &
-                    (dataframe['close'] > dataframe['bb_upperband'])
-                )
+
+                (dataframe['fastd'] > 62) & 
+                (dataframe['rsi'] > 73) &
+                (qtpylib.crossed_above(
+                        dataframe['sar'], dataframe['close']
+                    ))
+
             ),
             'sell'] = 1
         return dataframe

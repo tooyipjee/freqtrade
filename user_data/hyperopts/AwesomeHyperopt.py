@@ -51,22 +51,22 @@ class AwesomeHyperopt(IHyperOpt):
             conditions = []
 
             # GUARDS AND TRENDS
-            if params.get('mfi-enabled'):
-                conditions.append(dataframe['mfi'] < params['mfi-value'])
-            if params.get('fastd-enabled'):
-                conditions.append(dataframe['fastd'] < params['fastd-value'])
-            if params.get('adx-enabled'):
-                conditions.append(dataframe['adx'] > params['adx-value'])
+            # if params.get('mfi-enabled'):
+            #     conditions.append(dataframe['mfi'] < params['mfi-value'])
+            # if params.get('fastd-enabled'):
+            #     conditions.append(dataframe['fastd'] < params['fastd-value'])
+            # if params.get('adx-enabled'):
+            #     conditions.append(dataframe['adx'] > params['adx-value'])
             if params.get('rsi-enabled'):
                 conditions.append(dataframe['rsi'] < params['rsi-value'])
             if params.get('slowk-enabled'):
                 conditions.append(dataframe['slowk'] < params['slowk-value'])
             if params.get('CDLHAMMER-enabled'):
                 conditions.append(dataframe['CDLHAMMER'] == 100)
-            if params.get('CDLDRAGONFLYDOJI-enabled'):
-                conditions.append(dataframe['CDLDRAGONFLYDOJI'] == 100)
-            if params.get('CDLMORNINGSTAR-enabled'):
-                conditions.append(dataframe['CDLMORNINGSTAR'] == 100)
+            # if params.get('CDLDRAGONFLYDOJI-enabled'):
+            #     conditions.append(dataframe['CDLDRAGONFLYDOJI'] == 100)
+            # if params.get('CDLMORNINGSTAR-enabled'):
+            #     conditions.append(dataframe['CDLMORNINGSTAR'] == 100)
 
             # TRIGGERS
             if 'trigger' in params:
@@ -106,14 +106,20 @@ class AwesomeHyperopt(IHyperOpt):
         Define your Hyperopt space for searching buy strategy parameters.
         """
         return [
-            Integer(10, 25, name='mfi-value'),
-            Integer(15, 45, name='fastd-value'),
-            Integer(20, 50, name='adx-value'),
+            # Integer(10, 25, name='mfi-value'),
+            # Integer(15, 45, name='fastd-value'),
+            # Integer(20, 50, name='adx-value'),
             Integer(20, 40, name='rsi-value'),
-            Categorical([True, False], name='mfi-enabled'),
-            Categorical([True, False], name='fastd-enabled'),
-            Categorical([True, False], name='adx-enabled'),
+            Integer(20, 40, name='slowk-value'),
+            Integer(-20, 20, name='ao-value'),
+            # Categorical([True, False], name='mfi-enabled'),
+            # Categorical([True, False], name='fastd-enabled'),
+            # Categorical([True, False], name='adx-enabled'),
+            Categorical([True, False], name='slowk-enabled'),
             Categorical([True, False], name='rsi-enabled'),
+            # Categorical([True, False], name='CDLHAMMER-enabled'),
+            # Categorical([True, False], name='CDLDRAGONFLYDOJI-enabled'),
+            # Categorical([True, False], name='CDLMORNINGSTAR-enabled'),
             Categorical([
                 'bb_lower',
                 'macd_cross_signal',
@@ -122,11 +128,8 @@ class AwesomeHyperopt(IHyperOpt):
                 'wbb_lower'
                 ], name='trigger'),
 
-            Integer(-20, 20, name='ao-value'),
-            Integer(10, 40, name='slowk-value'),
-            Categorical([True, False], name='CDLHAMMER-enabled'),
-            Categorical([True, False], name='CDLDRAGONFLYDOJI-enabled'),
-            Categorical([True, False], name='CDLMORNINGSTAR-enabled'),
+            
+            
         ]
 
     @staticmethod
@@ -141,20 +144,20 @@ class AwesomeHyperopt(IHyperOpt):
             conditions = []
 
             # GUARDS AND TRENDS
-            if params.get('sell-mfi-enabled'):
-                conditions.append(dataframe['mfi'] > params['sell-mfi-value'])
+            # if params.get('sell-mfi-enabled'):
+            #     conditions.append(dataframe['mfi'] > params['sell-mfi-value'])
             if params.get('sell-fastd-enabled'):
                 conditions.append(dataframe['fastd'] > params['sell-fastd-value'])
-            if params.get('sell-adx-enabled'):
-                conditions.append(dataframe['adx'] < params['sell-adx-value'])
+            # if params.get('sell-adx-enabled'):
+            #     conditions.append(dataframe['adx'] < params['sell-adx-value'])
             if params.get('sell-rsi-enabled'):
                 conditions.append(dataframe['rsi'] > params['sell-rsi-value'])
-            if params.get('CDLHANGINGMAN-enabled'):
-                conditions.append(dataframe['CDLHANGINGMAN'] == 100)
-            if params.get('CDLEVENINGDOJISTAR-enabled'):
-                conditions.append(dataframe['CDLEVENINGDOJISTAR'] == 100)
-            if params.get('CDLEVENINGSTAR-enabled'):
-                conditions.append(dataframe['CDLEVENINGSTAR'] == 100)
+            # if params.get('CDLHANGINGMAN-enabled'):
+            #     conditions.append(dataframe['CDLHANGINGMAN'] == 100)
+            # if params.get('CDLEVENINGDOJISTAR-enabled'):
+            #     conditions.append(dataframe['CDLEVENINGDOJISTAR'] == 100)
+            # if params.get('CDLEVENINGSTAR-enabled'):
+            #     conditions.append(dataframe['CDLEVENINGSTAR'] == 100)
             
             # TRIGGERS
             if 'sell-trigger' in params:
@@ -193,22 +196,22 @@ class AwesomeHyperopt(IHyperOpt):
         Define your Hyperopt space for searching sell strategy parameters.
         """
         return [
-            Integer(75, 100, name='sell-mfi-value'),
+            # Integer(75, 100, name='sell-mfi-value'),
             Integer(50, 100, name='sell-fastd-value'),
-            Integer(50, 100, name='sell-adx-value'),
+            # Integer(50, 100, name='sell-adx-value'),
             Integer(60, 100, name='sell-rsi-value'),
-            Categorical([True, False], name='sell-mfi-enabled'),
+            Integer(-20, 20, name='sell-ao-value'),
+            # Categorical([True, False], name='sell-mfi-enabled'),
             Categorical([True, False], name='sell-fastd-enabled'),
-            Categorical([True, False], name='sell-adx-enabled'),
+            # Categorical([True, False], name='sell-adx-enabled'),
             Categorical([True, False], name='sell-rsi-enabled'),
             Categorical(['sell-bb_upper',
                         'sell-wbb_upper',
                         'sell-macd_cross_signal',
                         'sell-sar_reversal',
                         'sell-ao_signal'], name='sell-trigger'),
-            Integer(-20, 20, name='sell-ao-value'),
-            Categorical([True, False], name='CDLHANGINGMAN-enabled'),
-            Categorical([True, False], name='CDLEVENINGDOJISTAR-enabled'),
-            Categorical([True, False], name='CDLEVENINGSTAR-enabled'),
+            # Categorical([True, False], name='CDLHANGINGMAN-enabled'),
+            # Categorical([True, False], name='CDLEVENINGDOJISTAR-enabled'),
+            # Categorical([True, False], name='CDLEVENINGSTAR-enabled'),
                          
         ]
