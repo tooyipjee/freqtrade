@@ -41,7 +41,7 @@ class Strategy009(IStrategy):
     }
 
     # Stoploss:
-    stoploss = -0.32335
+    stoploss = -0.2
 
     # Optimal timeframe for the strategy
     timeframe = '5m'
@@ -128,10 +128,12 @@ class Strategy009(IStrategy):
         """
         dataframe.loc[
             (
-                # (dataframe['CDLDRAGONFLYDOJI'] == 100) &
-                (dataframe['fastd'] < 38) &
-                (dataframe['slowk'] < 22) &
-                (dataframe['close'] < 0.98*dataframe['bb_lowerband'])
+                # (dataframe['CDLDRAGONFLYDOJI'] == 100) |
+                (
+                    (dataframe['fastd'] < 38) &
+                    (dataframe['slowk'] < 22) &
+                    (dataframe['close'] < 0.98*dataframe['bb_lowerband'])
+                )
             ),
             'buy'] = 1
 
