@@ -29,7 +29,7 @@ class Strategy008(IStrategy):
     }
 
     # Stoploss:
-    stoploss = -0.31912
+    stoploss = -0.25
 
     # # Minimal ROI designed for the strategy.
     # # This attribute will be overridden if the config file contains "minimal_roi"
@@ -132,7 +132,7 @@ class Strategy008(IStrategy):
         """
         dataframe.loc[
             (
-                (dataframe['close'] < dataframe['bb_lowerband'])
+                (dataframe['close'] < 0.99*dataframe['bb_lowerband'])
             ),
             'buy'] = 1
 

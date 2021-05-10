@@ -1,0 +1,119 @@
+{
+    "max_open_trades": 3,
+    "stake_currency": "BTC",
+    "stake_amount": "unlimited",
+    "tradable_balance_ratio": 1,
+    "fiat_display_currency": "GBP",
+    "timeframe": "5m",
+    "dry_run": false,
+    "cancel_open_orders_on_exit": false,
+    "unfilledtimeout": {
+        "buy": 10,
+        "sell": 30
+    },
+    "bid_strategy": {
+        "price_side": "bid",
+        "ask_last_balance": 0.0,
+        "use_order_book": true,
+        "order_book_top": 2,
+        "check_depth_of_market": {
+            "enabled": false,
+            "bids_to_ask_delta": 1
+        }
+    },
+    "ask_strategy": {
+        "price_side": "ask",
+        "use_order_book": false,
+        "order_book_min": 1,
+        "order_book_max": 5,
+        "use_sell_signal": true,
+        "sell_profit_only": false,
+        "ignore_roi_if_buy_signal": false
+    },
+    "exchange": {
+        "name": "binance",
+        "key": "bC3Gc7erZgRnURHFJwPzhvrxSvvDaf6ZTDvDyqtgt8wj6xds3uzyLUjXdz1xtIe5",
+        "secret": "dPctTKTa12GBJkVte8YHBrTuiGq6IeBAewK8261vwHK5WblX2SCtsQlH4Rwro7I6",
+        "ccxt_config": {"enableRateLimit": true},
+        "ccxt_async_config": {
+            "enableRateLimit": true,
+            "rateLimit": 200
+        },
+        "pair_whitelist": [
+            "ALGO/BTC",
+            "ATOM/BTC",
+            "BAT/BTC",
+            "BCH/BTC",
+            "BRD/BTC",
+            "EOS/BTC",
+            "ETH/BTC",
+            "IOTA/BTC",
+            "LINK/BTC",
+            "LTC/BTC",
+            "NEO/BTC",
+            "NXS/BTC",
+            "XMR/BTC",
+            "XRP/BTC",
+            "XTZ/BTC",
+            "DOGE/BTC",
+            "DOT/BTC",
+            "ADA/BTC",
+            "AAVE/BTC",
+            "DASH/BTC",
+            "BTT/BTC",
+        ],
+        "pair_blacklist": [
+            "BNB/BTC",
+            "BNB/BUSD",
+            "BNB/ETH",
+            "BNB/EUR",
+            "BNB/NGN",
+            "BNB/PAX",
+            "BNB/RUB",
+            "BNB/TRY",
+            "BNB/TUSD",
+            "BNB/USDC",
+            "BNB/USDS",
+            "BNB/USDT",
+        ]
+    },
+    "pairlists": [
+        {"method": "StaticPairList"}
+    ],
+    "edge": {
+        "enabled": false,
+        "process_throttle_secs": 3600,
+        "calculate_since_number_of_days": 7,
+        "allowed_risk": 0.01,
+        "stoploss_range_min": -0.01,
+        "stoploss_range_max": -0.3,
+        "stoploss_range_step": -0.01,
+        "minimum_winrate": 0.60,
+        "minimum_expectancy": 0.20,
+        "min_trade_number": 10,
+        "max_trade_duration_minute": 1440,
+        "remove_pumps": false
+    },
+    "telegram": {
+        "enabled": true,
+        "token": "1631627045:AAFmH2TXPGoDt8Q12kwg9h5PRW0VAkf8Jqk",
+        "chat_id": "1624570943"
+    },
+    "api_server": {
+        "enabled": false,
+        "listen_ip_address": "127.0.0.1",
+        "listen_port": 8080,
+        "verbosity": "error",
+        "enable_openapi": false,
+        "jwt_secret_key": "somethingrandom",
+        "CORS_origins": [],
+        "username": "",
+        "password": ""
+    },
+    "bot_name": "freqtrade",
+    "initial_state": "running",
+    "forcebuy_enable": false,
+    "internals": {
+        "process_throttle_secs": 5
+    }
+}
