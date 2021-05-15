@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: freqtrade
-Version: develop-1465af50d
+Version: develop-cc7970c1
 Summary: Crypto Trading Bot
 Home-page: https://github.com/freqtrade/freqtrade
 Author: Freqtrade Team
@@ -221,9 +221,9 @@ Classifier: Operating System :: MacOS
 Classifier: Operating System :: Unix
 Classifier: Topic :: Office/Business :: Financial :: Investment
 Description-Content-Type: text/markdown
-Provides-Extra: all
 Provides-Extra: api
 Provides-Extra: dev
-Provides-Extra: hyperopt
-Provides-Extra: jupyter
 Provides-Extra: plot
+Provides-Extra: jupyter
+Provides-Extra: hyperopt
+Provides-Extra: all
